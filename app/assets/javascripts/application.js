@@ -1,4 +1,7 @@
+//= require lodash
 //= require angular
+//= require angular-simple-logger
+//= require angular-google-maps
 //= require angular-rails-templates
 //= require angular-ui-router
 

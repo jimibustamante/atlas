@@ -8,7 +8,16 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 }
 
 body {
-  padding: 0;
+  padding: 0; 
+}
+
+section.filters {
+  padding-bottom: 10px;
+  padding-top: 20px;
+}
+
+section.map-section {
+  .angular-google-map-container { height: 70vh; }
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -67,7 +76,7 @@ body {
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 730px;
+    max-width: 1240px;
   }
 
   /* Remove the padding we set earlier */
