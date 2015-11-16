@@ -22,8 +22,8 @@ angular
   function ($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
     $stateProvider
       .state('home', {
-        url: '/',
-        templateUrl: '/assets/home.html',
+        url: '/home',
+        templateUrl: '/assets/templates/_home.html',
         controller: 'HomeCtrl'
       });
     $urlRouterProvider.otherwise('home');
