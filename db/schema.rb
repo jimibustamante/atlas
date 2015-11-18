@@ -11,24 +11,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151117031054) do
+ActiveRecord::Schema.define(version: 20151118192425) do
 
   create_table "communes", force: :cascade do |t|
+    t.integer  "province_id", null: false
+    t.string   "name",        null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "labors", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.integer  "owner_id",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "mining_wastes", force: :cascade do |t|
     t.string   "status",                              null: false
-    t.decimal  "utm_north",  precision: 10, scale: 6
     t.decimal  "height",     precision: 10, scale: 6
+    t.decimal  "utm_north",  precision: 10, scale: 6
     t.decimal  "utm_east",   precision: 10, scale: 6
+    t.decimal  "lon",        precision: 10, scale: 6
+    t.decimal  "lat",        precision: 10, scale: 6
+    t.integer  "region_id",                           null: false
+    t.integer  "labor_id",                            null: false
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
   end
 
   create_table "owners", force: :cascade do |t|
     t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "provinces", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.integer  "region_id",  null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

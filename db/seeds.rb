@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Region.create name: "Tarapacá", region_number: "I"
 Region.create name: "Antofagasta", region_number: "II"
-Region.create name: "Atacama", region_number: "II"
+Region.create name: "Atacama", region_number: "III"
 Region.create name: "Coquimbo", region_number: "IV"
 Region.create name: "Valparaíso", region_number: "V"
 Region.create name: "O’Higgins", region_number: "VI"

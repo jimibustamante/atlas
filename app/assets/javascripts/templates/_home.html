@@ -2,9 +2,9 @@
   <form class="col-md-6 col-lg-6">
     <div class="form-group">
       <label for="inputRegion">Región</label>
-      <select class="form-control" class="form-control" id="inputRegion" >
+      <select ng-model="region" ng-change="getCommunes()" class="form-control" id="inputRegion" >
         <option value="">Seleccione Región</option>
-        <option ng-repeat="region in regions" value="{{region}}">{{region.region_number}} - {{region.name}}</option>
+        <option ng-repeat="r in regions" value="{{r}}">{{r.region_number}} - {{r.name}}</option>
       </select>
     </div>
     <div class="form-group">
