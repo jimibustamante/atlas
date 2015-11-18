@@ -4,7 +4,7 @@
       <label for="inputRegion">Región</label>
       <select class="form-control" class="form-control" id="inputRegion" >
         <option value="">Seleccione Región</option>
-        <option ng-repeat="region in regions" value="{{region}}">{{region}}</option>
+        <option ng-repeat="region in regions" value="{{region}}">{{region.region_number}} - {{region.name}}</option>
       </select>
     </div>
     <div class="form-group">

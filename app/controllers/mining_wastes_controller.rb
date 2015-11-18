@@ -1,0 +1,74 @@
+class MiningWastesController < ApplicationController
+  before_action :set_mining_waste, only: [:show, :edit, :update, :destroy]
+
+  # GET /mining_wastes
+  # GET /mining_wastes.json
+  def index
+    @mining_wastes = MiningWaste.all
+  end
+
+  # GET /mining_wastes/1
+  # GET /mining_wastes/1.json
+  def show
+  end
+
+  # GET /mining_wastes/new
+  def new
+    @mining_waste = MiningWaste.new
+  end
+
+  # GET /mining_wastes/1/edit
+  def edit
+  end
+
+  # POST /mining_wastes
+  # POST /mining_wastes.json
+  def create
+    @mining_waste = MiningWaste.new(mining_waste_params)
+
+    respond_to do |format|
+      if @mining_waste.save
+        format.html { redirect_to @mining_waste, notice: 'Mining waste was successfully created.' }
+        format.json { render :show, status: :created, location: @mining_waste }
+      else
+        format.html { render :new }
+        format.json { render json: @mining_waste.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /mining_wastes/1
+  # PATCH/PUT /mining_wastes/1.json
+  def update
+    respond_to do |format|
+      if @mining_waste.update(mining_waste_params)
+        format.html { redirect_to @mining_waste, notice: 'Mining waste was successfully updated.' }
+        format.json { render :show, status: :ok, location: @mining_waste }
+      else
+        format.html { render :edit }
+        format.json { render json: @mining_waste.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /mining_wastes/1
+  # DELETE /mining_wastes/1.json
+  def destroy
+    @mining_waste.destroy
+    respond_to do |format|
+      format.html { redirect_to mining_wastes_url, notice: 'Mining waste was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_mining_waste
+      @mining_waste = MiningWaste.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def mining_waste_params
+      params[:mining_waste]
+    end
+end

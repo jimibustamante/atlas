@@ -10,5 +10,10 @@
 angular.module('atlasApp')
   .controller('HomeCtrl', function ($scope, filtersFact) {
     $scope.map = { center: { latitude: -35.6090313, longitude: -68.8358146 }, zoom: 4 };
-    $scope.regions = filtersFact.regions
+    filtersFact.regions().then(function successCallback(response) {
+        $scope.regions =  response.data
+      }, function errorCallback(response) {
+        console.log("error")
+        $scope.regions = []
+      });
   });
