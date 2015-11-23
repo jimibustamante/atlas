@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20151118192425) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "communes", force: :cascade do |t|
     t.integer  "province_id", null: false
     t.string   "name",        null: false
@@ -43,7 +46,7 @@ ActiveRecord::Schema.define(version: 20151118192425) do
     t.datetime "updated_at",                              null: false
   end
 
-  add_index "mining_wastes", ["sernageomin_id"], name: "index_mining_wastes_on_sernageomin_id"
+  add_index "mining_wastes", ["sernageomin_id"], name: "index_mining_wastes_on_sernageomin_id", using: :btree
 
   create_table "owners", force: :cascade do |t|
     t.string   "name",       null: false

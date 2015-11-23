@@ -23,7 +23,7 @@ angular
     $stateProvider
       .state('home', {
         url: '/home',
-        templateUrl: '/assets/templates/_home.html',
+        templateUrl: '<%= asset_path("assets/templates/_home.html") %>',
         controller: 'HomeCtrl'
       });
     $urlRouterProvider.otherwise('home');
