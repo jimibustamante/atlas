@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('atlasApp', ['ui.router', 'templates', 'uiGmapgoogle-maps'])
+  .module('atlasApp', ['ui.bootstrap', 'ui.router', 'templates', 'uiGmapgoogle-maps'])
   .constant(
     "FILTERS_VALUES", {
       "regions": ['I', 'II', 'III']

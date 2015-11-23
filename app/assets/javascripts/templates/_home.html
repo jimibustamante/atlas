@@ -21,7 +21,13 @@
   <div class="form-group">
     <label for="inputOwner" class="control-label">Dueño/Empresa</label>
     <div >
-      <input type="email" class="form-control" id="inputOwner" placeholder="Seleccione Dueño">
+      <pre>Model: {{owner | json}}</pre>
+      <input type="text" ng-model="owner" typeahead="suggestion for suggestion in getOwnersTypeahead($viewValue)">
+
+      <i ng-show="loadingOwners" class="glyphicon glyphicon-refresh"></i>
+      <div ng-show="noResults">
+        <i class="glyphicon glyphicon-remove"></i> No Results Found
+      </div>
     </div>
   </div>
 

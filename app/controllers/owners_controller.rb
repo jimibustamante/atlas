@@ -4,7 +4,12 @@ class OwnersController < ApplicationController
   # GET /owners
   # GET /owners.json
   def index
-    @owners = Owner.all
+    if params[:name]
+      @owners = Owner.where("lower(name) LIKE ?", "%#{params[:name].downcase}%")
+    end
+    respond_to do |format|
+      format.json { render json: @owners, status: :ok }
+    end
   end
 
   # GET /owners/1

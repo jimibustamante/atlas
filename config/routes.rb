@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :provinces, only: [:index]
       resources :communes, only: [:index]
       resources :mining_wastes, only: [:index]
+      resources :owners, only: [:index]
     end
   end
 

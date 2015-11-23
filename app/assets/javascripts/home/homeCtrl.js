@@ -11,8 +11,16 @@ angular.module('atlasApp')
   .controller('HomeCtrl', function ($scope, filtersFact, uiGmapGoogleMapApi) {
     $scope.map = { center: { latitude: -35.6090313, longitude: -68.8358146 }, zoom: 4 };
     uiGmapGoogleMapApi.then(function (maps) {
-      debugger
     })
+
+    $scope.getOwnersTypeahead = function (name) {
+      return filtersFact.getOwners(name).then(function successCallback(response) {
+        $scope.owners = response.data
+        }, function errorCallback(response) {
+          console.log("error")
+        });
+    }
+
     filtersFact.regions().then(function successCallback(response) {
       $scope.regions =  response.data
       }, function errorCallback(response) {

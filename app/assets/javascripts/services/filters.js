@@ -16,5 +16,9 @@ angular.module('atlasApp')
     if (commune_id && commune_id != "") {data.commune_id = commune_id}
     return $http({method: 'GET', params : data, url: factory.baseURL + '/mining_wastes.json'})
   }
+
+  factory.getOwners = function(name) {
+    return $http({method: 'GET', url: factory.baseURL + '/owners.json', params: {name : name}})
+  };
   return factory
 }]);

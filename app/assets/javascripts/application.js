@@ -6,4 +6,5 @@
 //= require angular-ui-router
 //= require angular-simple-logger
 //= require angular-google-maps
+//= require angular-bootstrap
 //= require_tree .
