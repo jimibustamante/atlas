@@ -1,3 +1,4 @@
+#encoding: utf-8
 # SQLite version 3.x
 #   gem install sqlite3
 #
@@ -26,5 +27,5 @@ production:
   pool: 5
   timeout: 5000
   database: atlas_production
-  username: atlas_admin
+  username: atlas
   password: winn1379
