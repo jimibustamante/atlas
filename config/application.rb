@@ -22,5 +22,11 @@ module Atlas
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.angular_templates.module_name    = 'templates'
+    config.angular_templates.ignore_prefix  = %w(templates/)
+    config.angular_templates.inside_paths   = [Rails.root.join('app', 'assets', 'javascripts')]
+    #config.angular_templates.markups        = %w(erb str haml slim md)
+    config.angular_templates.htmlcompressor = false
   end
 end
