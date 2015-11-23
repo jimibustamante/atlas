@@ -5,6 +5,9 @@ class CommunesController < ApplicationController
   # GET /communes.json
   def index
     @communes = Commune.all
+    respond_to do |format|
+      format.json { render json: @communes, status: :ok }
+    end
   end
 
   # GET /communes/1

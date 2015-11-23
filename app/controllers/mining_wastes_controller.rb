@@ -4,7 +4,25 @@ class MiningWastesController < ApplicationController
   # GET /mining_wastes
   # GET /mining_wastes.json
   def index
-    @mining_wastes = MiningWaste.all
+    @mining_wastes = []
+    Rails.logger.debug params.inspect
+    if params[:region_id] && params[:commune_id]
+      # region = Region.find params[:region_id]
+      commune = Commune.find params[:commune_id]
+      @mining_wastes = commune.mining_wastes
+    else
+      if params[:commune_id]
+        commune = Commune.find params[:commune_id]
+        @mining_wastes = commune.mining_wastes
+      end
+      if params[:region_id]
+        region = Region.find params[:region_id]
+        @mining_wastes = region.mining_wastes
+      end
+    end
+    respond_to do |format|
+      format.json { render json: @mining_wastes.as_json(methods: [:coords]), status: :ok }
+    end
   end
 
   # GET /mining_wastes/1

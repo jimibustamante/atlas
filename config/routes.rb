@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
-  resources :owners
-  resources :communes
-  resources :regions
-  resources :mining_wastes
+  scope '/api' do
+    scope '/v1' do
+      resources :regions, only: [:index] do
+        get '/communes' => 'regions#communes'
+      end
+      resources :provinces, only: [:index]
+      resources :communes, only: [:index]
+      resources :mining_wastes, only: [:index]
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

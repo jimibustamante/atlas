@@ -17,7 +17,17 @@ section.filters {
 }
 
 section.map-section {
-  .angular-google-map-container { height: 70vh; }
+  height: 70vh;
+  .angular-google-map-container { 
+    height: 70vh;
+  }
+  .info-container {
+    height: 100%;
+    background-color: red;
+    .national-stats, .regional-stats, .communal-stats {
+
+    }
+  }
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -77,6 +87,7 @@ section.map-section {
 @media screen and (min-width: 768px) {
   .container {
     max-width: 1240px;
+    width: 1240px;
   }
 
   /* Remove the padding we set earlier */

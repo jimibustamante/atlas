@@ -1,7 +1,8 @@
 class Region < ActiveRecord::Base
   has_many :provinces
+  has_many :mining_wastes
 
-  def comunnes
-    # provinces.map()
+  def communes
+    provinces.map(&:communes).flatten
   end
 end

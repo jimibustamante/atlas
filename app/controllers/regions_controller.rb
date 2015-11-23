@@ -6,7 +6,16 @@ class RegionsController < ApplicationController
   def index
     @regions = Region.all
     respond_to do |format|
-      format.json { render json: @regions, status: :ok }
+      format.json { render json: @regions.to_json, status: :ok }
+    end
+  end
+
+  # GET /regions/1/communes.json
+  def communes
+    region = Region.find params[:region_id]
+    @communes = region.communes
+    respond_to do |format|
+      format.json { render json: @communes, status: :ok }
     end
   end
 

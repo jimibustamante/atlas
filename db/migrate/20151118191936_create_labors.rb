@@ -3,6 +3,7 @@ class CreateLabors < ActiveRecord::Migration
     create_table :labors do |t|
       t.string :name, :null => false
       t.integer :owner_id, :null => false
+      t.integer :commune_id, :null => false
       t.timestamps null: false
     end
   end
