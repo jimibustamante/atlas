@@ -9,7 +9,8 @@ default: &default
   encoding: unicode
   pool: 5
   timeout: 5000
-
+  username: jimi
+  password: winn1379
 
 development:
   <<: *default
