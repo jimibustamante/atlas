@@ -42,7 +42,6 @@ GEM
       tilt
     arel (6.0.3)
     builder (3.2.2)
-    byebug (6.0.2)
     erubis (2.7.0)
     execjs (2.6.0)
     globalid (0.3.6)
@@ -124,7 +123,6 @@ PLATFORMS
 
 DEPENDENCIES
   angular-rails-templates
-  byebug
   jbuilder (~> 2.0)
   rails (= 4.2.4)
   sass-rails (~> 5.0)
