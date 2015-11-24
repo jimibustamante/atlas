@@ -20,7 +20,7 @@ gem 'therubyracer'
 
 gem 'angular-rails-templates'
 
-gem 'ngannotate-rails', '~> 0.15.4'
+# gem 'ngannotate-rails', '~> 0.15.4'
 
 gem 'autoprefixer-rails'
 
