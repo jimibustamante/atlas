@@ -20,5 +20,9 @@ angular.module('atlasApp')
   factory.getOwners = function(name) {
     return $http({method: 'GET', url: factory.baseURL + '/owners.json', params: {name : name}})
   };
+
+  factory.getNationalStats = function () {
+    return $http({method: 'GET', url: factory.baseURL + '/national_stats.json', params: {name : name}})
+  }
   return factory
 }]);

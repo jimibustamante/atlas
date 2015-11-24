@@ -48,7 +48,6 @@ angular.module('atlasApp')
       }
   
       $scope.mapFitBounds = function (argument) {
-        debugger
         var bounds = new maps.LatLngBounds();
         for (var i in markers) // your marker list here
             bounds.extend(markers[i].position) // your marker position, must be a LatLng instance

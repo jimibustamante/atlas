@@ -21,8 +21,7 @@
   <div class="form-group">
     <label for="inputOwner" class="control-label">Dueño/Empresa</label>
     <div >
-      <pre>Model: {{owner | json}}</pre>
-      <input type="text" ng-model="owner" typeahead="suggestion for suggestion in getOwnersTypeahead($viewValue)">
+      <input type="text" class="form-control" ng-model="owner" placeholder="Escriba un nombre..." typeahead="suggestion for suggestion in getOwnersTypeahead($viewValue)">
 
       <i ng-show="loadingOwners" class="glyphicon glyphicon-refresh"></i>
       <div ng-show="noResults">
@@ -43,5 +42,5 @@
   <ui-gmap-google-map center='map.center' zoom='map.zoom' class="col-md-8">
     <ui-gmap-marker data-ng-repeat="mw in mining_wastes" idKey="mw.id" coords='mw.coords'> </ui-gmap-marker>
   </ui-gmap-google-map>
-  <info-box class="info-container col-md-4"></info-box>
+  <info-box region-id="region_id" commune-id="commune_id" class="info-container col-md-4"></info-box>
 </section>
