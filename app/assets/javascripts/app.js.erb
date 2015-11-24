@@ -15,11 +15,7 @@ angular
       "regions": ['I', 'II', 'III']
     }
   )
-  .config([
-  '$stateProvider',
-  '$urlRouterProvider',
-  'uiGmapGoogleMapApiProvider',
-  function ($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
+  .config(['$stateProvider','$urlRouterProvider','uiGmapGoogleMapApiProvider', function ($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
     $stateProvider
       .state('home', {
         url: '/home',
