@@ -1,7 +1,7 @@
 class CreateMiningWastes < ActiveRecord::Migration
   def change
     create_table :mining_wastes do |t|
-      t.integer :sernageomin_id, :null => false
+      t.integer :sernageomin_id, :null => false, :unique => true
       t.string :status, :null => false
       t.string :name
       t.decimal :height, {:precision => 10, :scale => 6}
