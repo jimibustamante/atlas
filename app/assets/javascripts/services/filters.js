@@ -1,5 +1,5 @@
 angular.module('atlasApp')
-.factory('filtersFact', ['$http', 'FILTERS_VALUES', function($http, FILTERS_VALUES) {
+.factory('filtersFact', ['$http', 'FILTERS_VALUES', function ($http, FILTERS_VALUES) {
   var factory = {}
   factory.baseURL = "/api/v1"
   factory.regions = function() {

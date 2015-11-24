@@ -7,4 +7,5 @@
 //= require angular-simple-logger
 //= require angular-google-maps
 //= require angular-bootstrap
+//= require app
 //= require_tree .
