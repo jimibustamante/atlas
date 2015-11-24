@@ -12,7 +12,8 @@ angular.module('atlasApp')
       link: link,
       scope : {
         regionId: '=',
-        communeId: '='
+        communeId: '=',
+        vm: '='
       }
     };
   }]);

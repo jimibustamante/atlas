@@ -32,5 +32,24 @@ angular.module('atlasApp')
   factory.getNationalStats = function () {
     return $http({method: 'GET', url: factory.baseURL + '/national_stats.json', params: {name : name}})
   }
+
+  factory.regionStats = function (region_id) {
+    $http({method: 'GET', url: factory.baseURL + '/regional_stats.json', params: {region_id : region_id}}).then(function (response) {
+      factory.regional_stats = response.data
+    }, function () {
+      console.log('error')
+    })
+  }
+
+  factory.communeStats = function (commune_id) {
+    if (commune_id) {
+      $http({method: 'GET', url: factory.baseURL + '/communal_stats.json', params: {commune_id : commune_id}}).then(function (response) {
+        factory.commune_stats = response.data
+      }, function () {
+        console.log('error')
+      })
+    }
+  }
+
   return factory
 }]);

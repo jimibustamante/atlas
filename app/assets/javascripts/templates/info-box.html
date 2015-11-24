@@ -3,12 +3,12 @@
     <h4 class="list-group-item-heading">Nacional</h4>
     <p class="list-group-item-text">Cantidad de Relaves: {{national_stats.mining_wastes_count}} </p>
   </a>
-  <a href="#" class="list-group-item">
+  <a href="#" class="list-group-item" ng-hide="!vm.regional_stats">
     <h4 class="list-group-item-heading">Regional</h4>
-    <p class="list-group-item-text">Cantidad de Relaves: - </p>
+    <p class="list-group-item-text">Cantidad de Relaves: {{vm.regional_stats.mining_wastes_count}} </p>
   </a>
-  <a href="#" class="list-group-item">
+  <a href="#" class="list-group-item" ng-hide="!vm.commune_stats">
     <h4 class="list-group-item-heading">Comunal</h4>
-    <p class="list-group-item-text">Cantidad de Relaves: - </p>
+    <p class="list-group-item-text">Cantidad de Relaves: {{vm.commune_stats.mining_wastes_count}} </p>
   </a>
 </div>
