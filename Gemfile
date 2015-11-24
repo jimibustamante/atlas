@@ -19,6 +19,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'therubyracer'
 
 gem 'angular-rails-templates'
+
+gem 'ngannotate-rails', '~> 0.15.4'
+
+gem 'autoprefixer-rails'
+
 #gem 'sprockets', '2.12.3'
 
 # Use ActiveModel has_secure_password
