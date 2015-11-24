@@ -13,14 +13,6 @@ angular.module('atlasApp')
       uiGmapGoogleMapApi.then(function (maps) {
       })
   
-      $scope.getOwnersTypeahead = function (name) {
-        return filtersFact.getOwners(name).then(function successCallback(response) {
-          $scope.owners = response.data
-          }, function errorCallback(response) {
-            console.log("error")
-          });
-      }
-  
       filtersFact.regions().then(function successCallback(response) {
         $scope.regions =  response.data
         }, function errorCallback(response) {
@@ -28,6 +20,27 @@ angular.module('atlasApp')
           $scope.regions = []
         });
   
+      $scope.getOwnersTypeahead = function (name) {
+        console.log(name)
+        return filtersFact.getOwners(name).then(function successCallback(response) {
+          $scope.owners = response.data
+          return response.data
+          }, function errorCallback(response) {
+            console.log("error")
+          });
+      }
+  
+      $scope.getLabors = function () {
+        if ($scope.owner.id) {
+          filtersFact.labors($scope.owner.id).then(function successCallback(response) {
+              $scope.labors =  response.data
+            }, function errorCallback(response) {
+              console.log("error")
+              $scope.labors = []
+            });
+        }
+      }
+
       $scope.getCommunes = function () {
         $scope.commune_id = ""
         filtersFact.communes($scope.region_id).then(function successCallback(response) {
@@ -47,6 +60,16 @@ angular.module('atlasApp')
         });
       }
   
+      $scope.getMiningWastesByOwner = function () {
+        filtersFact.getOwnerMiningWastes($scope.owner.id).then(function successCallback(response){
+          console.log("getMiningWastesByOwner")
+          $scope.mining_wastes = response.data
+        }, function errorCallback (response) {
+          console.log("error")
+          $scope.mining_wastes = []
+        });
+      }
+
       $scope.mapFitBounds = function (argument) {
         var bounds = new maps.LatLngBounds();
         for (var i in markers) // your marker list here

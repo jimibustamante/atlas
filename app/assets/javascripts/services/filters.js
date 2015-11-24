@@ -10,6 +10,10 @@ angular.module('atlasApp')
     return $http({method: 'GET', url: factory.baseURL + '/regions/' + region_id + '/communes.json'})
   }
 
+  factory.labors = function (owner_id) {
+    return $http({method: 'GET', url: factory.baseURL + '/owners/' + owner_id + '/labors.json'})
+  }
+
   factory.miningWastes = function(region_id, commune_id) {
     var data = {}
     if (region_id && region_id != "") {data.region_id = region_id}
@@ -20,6 +24,10 @@ angular.module('atlasApp')
   factory.getOwners = function(name) {
     return $http({method: 'GET', url: factory.baseURL + '/owners.json', params: {name : name}})
   };
+
+  factory.getOwnerMiningWastes = function(owner_id) {
+    return $http({method: 'GET', url: factory.baseURL + '/mining_wastes.json', params: {owner_id : owner_id}})
+  };  
 
   factory.getNationalStats = function () {
     return $http({method: 'GET', url: factory.baseURL + '/national_stats.json', params: {name : name}})

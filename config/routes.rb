@@ -4,10 +4,12 @@ Rails.application.routes.draw do
       resources :regions, only: [:index] do
         get '/communes' => 'regions#communes'
       end
+      resources :owners, only: [:index] do
+        get '/labors' => 'owners#labors'
+      end
       resources :provinces, only: [:index]
       resources :communes, only: [:index]
       resources :mining_wastes, only: [:index]
-      resources :owners, only: [:index]
       get '/national_stats' => 'mining_wastes#national_stats'
     end
   end

@@ -12,6 +12,14 @@ class OwnersController < ApplicationController
     end
   end
 
+  def labors
+    owner = Owner.find params[:owner_id]
+    @labors = owner.labors
+    respond_to do |format|
+      format.json { render json: @labors, status: :ok }
+    end
+  end
+
   # GET /owners/1
   # GET /owners/1.json
   def show
