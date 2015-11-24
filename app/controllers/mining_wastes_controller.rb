@@ -52,6 +52,7 @@ class MiningWastesController < ApplicationController
     if params[:region_id]
       region = Region.find params[:region_id]
       stats[:mining_wastes_count] = region.mining_wastes.count
+      stats[:name] = region.name
     end
     respond_to do |format|
       format.json { render json: stats.to_json, status: :ok }
@@ -63,6 +64,7 @@ class MiningWastesController < ApplicationController
     if params[:commune_id]
       commune = Commune.find params[:commune_id]
       stats[:mining_wastes_count] = commune.mining_wastes.count
+      stats[:name] = commune.name
     end
     respond_to do |format|
       format.json { render json: stats.to_json, status: :ok }
