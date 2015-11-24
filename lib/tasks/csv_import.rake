@@ -7,10 +7,12 @@ namespace :import do
     filename = File.join Rails.root, 'db/CATASTRO_RELAVES_CHILE_02_11_2015.csv'
     CSV.foreach(filename, headers: true) do |row|
       puts row["PROVINCIA"]
-      if !row["PROVINCIA"].nil?
-        region = Region.find_by_region_number row["REGIÓN_IN"]
+      puts row["REGION_IN"]
+      if row["PROVINCIA"]
+        region = Region.find_by_region_number row["REGION_IN"]
         province = Province.find_by_name row["PROVINCIA"]
-        if province.nil?
+        if province.nil? && region
+          puts "NUEVO"
           province = Province.create name: row["PROVINCIA"], region_id: region.id
         end
       end
@@ -22,10 +24,11 @@ namespace :import do
     filename = File.join Rails.root, 'db/CATASTRO_RELAVES_CHILE_02_11_2015.csv'
     CSV.foreach(filename, headers: true) do |row|
       puts row["COMUNA_INS"]
-      if !row["COMUNA_INS"].nil?
+      puts row["PROVINCIA"]
+      if row["COMUNA_INS"] && row["PROVINCIA"]
         province = Province.find_by_name row["PROVINCIA"]
         commune = Commune.find_by_name row["COMUNA_INS"]
-        if commune.nil?
+        if commune.nil? && province
           commune = Commune.create name: row["COMUNA_INS"], province_id: province.id
         end
       end
@@ -75,13 +78,12 @@ namespace :import do
   task mining_wastes: :environment do
     filename = File.join Rails.root, 'db/CATASTRO_RELAVES_CHILE_02_11_2015.csv'
     CSV.foreach(filename, headers: true) do |row|
-      puts row["NORTE_GEO"]
-      puts row["ESTE_GEO"]
+      puts row["NOMBRE_INS"]
       labor = Labor.find_by_name row["NOMBRE_FAE"]
       if !labor.nil? && !row["NORTE_GEO"].nil? && !row["ESTE_GEO"].nil?
         mining_waste = MiningWaste.find_by_sernageomin_id row["OBJECTID"]
         if mining_waste.nil?
-          mining_waste = MiningWaste.create! sernageomin_id: row["COMUNA_INS"], 
+          mining_waste = MiningWaste.create! sernageomin_id: row["OBJECTID"], 
             labor_id: labor.id,
             status: row["ESTADO_INS"],
             lon: row["ESTE_GEO"],
@@ -92,7 +94,7 @@ namespace :import do
             name: row["NOMBRE_INS"],
             region_id: labor.commune.province.region.id
         else
-          mining_waste.update_attributes! sernageomin_id: row["COMUNA_INS"], 
+          mining_waste.update_attributes! sernageomin_id: row["OBJECTID"], 
             labor_id: labor.id,
             status: row["ESTADO_INS"], 
             lon: row["ESTE_GEO"], 
