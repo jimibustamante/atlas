@@ -25,6 +25,14 @@ class MiningWastesController < ApplicationController
     end
   end
 
+  def national_stats
+    stats = {}
+    stats[:mining_wastes_count] = MiningWaste.all.count
+    respond_to do |format|
+      format.json { render json: stats.to_json, status: :ok }
+    end
+  end
+
   # GET /mining_wastes/1
   # GET /mining_wastes/1.json
   def show
