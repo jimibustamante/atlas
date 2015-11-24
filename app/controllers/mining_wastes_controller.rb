@@ -6,22 +6,36 @@ class MiningWastesController < ApplicationController
   def index
     @mining_wastes = []
     Rails.logger.debug params.inspect
-    if params[:region_id] && params[:commune_id]
-      # region = Region.find params[:region_id]
-      commune = Commune.find params[:commune_id]
-      @mining_wastes = commune.mining_wastes
+    if params[:owner_id]
+      if params[:owner_id] && params[:labor_id]
+        labor = Labor.find params[:labor_id]
+        @mining_wastes = labor.mining_wastes
+      else
+        owner = Owner.find params[:owner_id]
+        if owner
+          @mining_wastes = owner.mining_wastes 
+        else
+          @mining_wastes = []
+        end
+      end
     else
-      if params[:commune_id]
+      if params[:region_id] && params[:commune_id]
+        # region = Region.find params[:region_id]
         commune = Commune.find params[:commune_id]
         @mining_wastes = commune.mining_wastes
-      end
-      if params[:region_id]
-        region = Region.find params[:region_id]
-        @mining_wastes = region.mining_wastes
+      else
+        if params[:commune_id]
+          commune = Commune.find params[:commune_id]
+          @mining_wastes = commune.mining_wastes
+        end
+        if params[:region_id]
+          region = Region.find params[:region_id]
+          @mining_wastes = region.mining_wastes
+        end
       end
     end
     respond_to do |format|
-      format.json { render json: @mining_wastes.as_json(methods: [:coords]), status: :ok }
+      format.json { render json: @mining_wastes.as_json(methods: [:coords], only: [:id]), status: :ok }
     end
   end
 

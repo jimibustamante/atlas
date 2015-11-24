@@ -14,25 +14,32 @@
         <option ng-repeat="c in communes" value="{{c.id}}">{{c.name}}</option>
       </select>
     </div>
-    <button ng-click="getMiningWastes()" type="submit" class="btn btn-default">Filtrar</button>
+    <button ng-click="getMiningWastes()" type="submit" class="btn btn-default" ng-disabled="!commune_id && !region_id">Filtrar</button>
   </form>
 
 <form class="col-md-6 col-lg-6">
   <div class="form-group">
     <label for="inputOwner" class="control-label">Dueño/Empresa</label>
-    <div >
-      <input type="text" class="form-control" ng-model="owner" placeholder="Escriba un nombre..." typeahead="suggestion for suggestion in getOwnersTypeahead($viewValue)">
+    <div class="form-group">
+      <input type="text" class="form-control" typeahead-on-select="getLabors()" ng-model="owner" placeholder="Escriba un nombre..." typeahead="owner as owner.name for owner in getOwnersTypeahead($viewValue)">
 
       <i ng-show="loadingOwners" class="glyphicon glyphicon-refresh"></i>
       <div ng-show="noResults">
         <i class="glyphicon glyphicon-remove"></i> No Results Found
       </div>
     </div>
+    <div class="form-group">
+      <label for="inputComuna">Faena</label>
+      <select ng-model="labor_id" class="form-control" class="form-control" id="inputComuna">
+        <option value="">Seleccione Faena</option>
+        <option ng-repeat="l in labors" value="{{l.id}}">{{l.name}}</option>
+      </select>
+    </div>    
   </div>
 
   <div class="form-group">
     <div>
-      <button type="submit" class="btn btn-default">Filtrar por Dueño</button>
+      <button type="submit" ng-click="getMiningWastesByOwner()" class="btn btn-default" ng-disabled="!owner && !labor_id">Filtrar por Dueño</button>
     </div>
   </div>
 </form>
