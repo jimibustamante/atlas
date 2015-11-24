@@ -9,10 +9,13 @@
  */
 angular.module('atlasApp')
   .controller('HomeCtrl', ['$scope', 'filtersFact', 'uiGmapGoogleMapApi', function ($scope, filtersFact, uiGmapGoogleMapApi) {
+
+      $scope.vm = filtersFact
+
       $scope.map = { center: { latitude: -35.6090313, longitude: -68.8358146 }, zoom: 4 };
       uiGmapGoogleMapApi.then(function (maps) {
-      })
-  
+      })  
+
       filtersFact.regions().then(function successCallback(response) {
         $scope.regions =  response.data
         }, function errorCallback(response) {
@@ -75,6 +78,6 @@ angular.module('atlasApp')
             bounds.extend(markers[i].position) // your marker position, must be a LatLng instance
   
         map.fitBounds(bounds);
-      }
+      }      
   
     }]);

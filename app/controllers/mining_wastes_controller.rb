@@ -47,6 +47,28 @@ class MiningWastesController < ApplicationController
     end
   end
 
+  def regional_stats
+    stats = {}
+    if params[:region_id]
+      region = Region.find params[:region_id]
+      stats[:mining_wastes_count] = region.mining_wastes.count
+    end
+    respond_to do |format|
+      format.json { render json: stats.to_json, status: :ok }
+    end      
+  end
+
+  def communal_stats
+    stats = {}
+    if params[:commune_id]
+      commune = Commune.find params[:commune_id]
+      stats[:mining_wastes_count] = commune.mining_wastes.count
+    end
+    respond_to do |format|
+      format.json { render json: stats.to_json, status: :ok }
+    end      
+  end
+
   # GET /mining_wastes/1
   # GET /mining_wastes/1.json
   def show

@@ -2,14 +2,14 @@
   <form class="col-md-6 col-lg-6">
     <div class="form-group">
       <label for="inputRegion">Región</label>
-      <select ng-model="region_id" ng-change="getCommunes()" class="form-control" id="inputRegion" >
+      <select ng-model="region_id" ng-change="getCommunes(); vm.regionStats(region_id)" class="form-control" id="inputRegion" >
         <option value="">Seleccione Región</option>
         <option ng-repeat="r in regions" value="{{r.id}}">{{r.region_number}} - {{r.name}}</option>
       </select>
     </div>
     <div class="form-group">
       <label for="inputComuna">Comuna</label>
-      <select ng-model="commune_id" class="form-control" class="form-control" id="inputComuna">
+      <select ng-model="commune_id" ng-change="vm.communeStats(commune_id)" class="form-control" class="form-control" id="inputComuna">
         <option value="">Seleccione Comuna</option>
         <option ng-repeat="c in communes" value="{{c.id}}">{{c.name}}</option>
       </select>
@@ -49,5 +49,5 @@
   <ui-gmap-google-map center='map.center' zoom='map.zoom' class="col-md-8">
     <ui-gmap-marker data-ng-repeat="mw in mining_wastes" idKey="mw.id" coords='mw.coords'> </ui-gmap-marker>
   </ui-gmap-google-map>
-  <info-box region-id="region_id" commune-id="commune_id" class="info-container col-md-4"></info-box>
+  <info-box region-id="region_id" commune-id="commune_id" vm="vm" class="info-container col-md-4"></info-box>
 </section>

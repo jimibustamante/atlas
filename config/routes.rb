@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       resources :communes, only: [:index]
       resources :mining_wastes, only: [:index]
       get '/national_stats' => 'mining_wastes#national_stats'
+      get '/regional_stats' => 'mining_wastes#regional_stats'
+      get '/communal_stats' => 'mining_wastes#communal_stats'
     end
   end
 
