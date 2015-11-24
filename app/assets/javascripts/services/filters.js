@@ -25,8 +25,8 @@ angular.module('atlasApp')
     return $http({method: 'GET', url: factory.baseURL + '/owners.json', params: {name : name}})
   };
 
-  factory.getOwnerMiningWastes = function(owner_id) {
-    return $http({method: 'GET', url: factory.baseURL + '/mining_wastes.json', params: {owner_id : owner_id}})
+  factory.getOwnerMiningWastes = function(owner_id, labor_id) {
+    return $http({method: 'GET', url: factory.baseURL + '/mining_wastes.json', params: {owner_id : owner_id, labor_id : labor_id}})
   };  
 
   factory.getNationalStats = function () {

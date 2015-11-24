@@ -21,7 +21,6 @@ angular.module('atlasApp')
         });
   
       $scope.getOwnersTypeahead = function (name) {
-        console.log(name)
         return filtersFact.getOwners(name).then(function successCallback(response) {
           $scope.owners = response.data
           return response.data
@@ -61,7 +60,7 @@ angular.module('atlasApp')
       }
   
       $scope.getMiningWastesByOwner = function () {
-        filtersFact.getOwnerMiningWastes($scope.owner.id).then(function successCallback(response){
+        filtersFact.getOwnerMiningWastes($scope.owner.id, $scope.labor_id).then(function successCallback(response){
           console.log("getMiningWastesByOwner")
           $scope.mining_wastes = response.data
         }, function errorCallback (response) {
