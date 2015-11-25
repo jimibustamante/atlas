@@ -7,9 +7,9 @@ namespace :import do
     filename = File.join Rails.root, 'db/CATASTRO_RELAVES_CHILE_02_11_2015.csv'
     CSV.foreach(filename, headers: true) do |row|
       puts row["PROVINCIA"]
-      puts row["REGION_IN"]
+      puts row["REGIÓN_IN"]
       if row["PROVINCIA"]
-        region = Region.find_by_region_number row["REGION_IN"]
+        region = Region.find_by_region_number row["REGIÓN_IN"]
         province = Province.find_by_name row["PROVINCIA"]
         if province.nil? && region
           puts "NUEVO"
