@@ -43,6 +43,10 @@ class MiningWastesController < ApplicationController
   def national_stats
     stats = {}
     stats[:mining_wastes_count] = MiningWaste.all.count
+    stats[:active_mining_wastes] = MiningWaste.activo.count
+    stats[:inactive_mining_wastes] = MiningWaste.no_activo.count
+    stats[:abandoned_mining_wastes] = MiningWaste.abandonado.count
+    stats[:no_info] = MiningWaste.sin_info.count
     respond_to do |format|
       format.json { render json: stats.to_json, status: :ok }
     end
@@ -53,7 +57,11 @@ class MiningWastesController < ApplicationController
     if params[:region_id]
       region = Region.find params[:region_id]
       stats[:mining_wastes_count] = region.mining_wastes.count
-      stats[:name] = region.name
+      stats[:active_mining_wastes] = region.mining_wastes.activo.count
+      stats[:inactive_mining_wastes] = region.mining_wastes.no_activo.count
+      stats[:abandoned_mining_wastes] = region.mining_wastes.abandonado.count
+      stats[:no_info] = region.mining_wastes.sin_info.count
+      stats[:name] = region.name.upcase 
     end
     respond_to do |format|
       format.json { render json: stats.to_json, status: :ok }
@@ -65,6 +73,10 @@ class MiningWastesController < ApplicationController
     if params[:commune_id]
       commune = Commune.find params[:commune_id]
       stats[:mining_wastes_count] = commune.mining_wastes.count
+      stats[:active_mining_wastes] = commune.mining_wastes.activo.count
+      stats[:inactive_mining_wastes] = commune.mining_wastes.no_activo.count
+      stats[:abandoned_mining_wastes] = commune.mining_wastes.abandonado.count
+      stats[:no_info] = commune.mining_wastes.sin_info.count
       stats[:name] = commune.name
     end
     respond_to do |format|

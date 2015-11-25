@@ -12,8 +12,14 @@ angular.module('atlasApp')
 
       $scope.vm = filtersFact
       $scope.mining_wastes = []
-      $scope.map = { center: { latitude: -35.6090313, longitude: -68.8358146 }, zoom: 4 };
       uiGmapGoogleMapApi.then(function (maps) {
+        $scope.maps = maps
+        $scope.map = { center: { latitude: -35.6090313, longitude: -68.8358146 }, 
+          zoom: 4,
+          options: {
+            mapTypeId: $scope.maps.MapTypeId.SATELLITE
+          } 
+        };
       })  
 
       filtersFact.regions().then(function successCallback(response) {
@@ -73,7 +79,7 @@ angular.module('atlasApp')
       }
 
       $scope.mapFitBounds = function (argument) {
-        var bounds = new maps.LatLngBounds();
+        var bounds = new $scope.maps.LatLngBounds();
         for (var i in markers) // your marker list here
             bounds.extend(markers[i].position) // your marker position, must be a LatLng instance
   

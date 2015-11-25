@@ -4,7 +4,7 @@ class CommunesController < ApplicationController
   # GET /communes
   # GET /communes.json
   def index
-    @communes = Commune.all
+    @communes = Commune.all.order(:name)
     respond_to do |format|
       format.json { render json: @communes, status: :ok }
     end

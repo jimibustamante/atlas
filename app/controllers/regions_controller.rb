@@ -15,7 +15,7 @@ class RegionsController < ApplicationController
     region = Region.find params[:region_id]
     @communes = region.communes
     respond_to do |format|
-      format.json { render json: @communes, status: :ok }
+      format.json { render json: @communes.sort_by(&:name), status: :ok }
     end
   end
 
