@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151118192425) do
+ActiveRecord::Schema.define(version: 20151125161937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,9 @@ ActiveRecord::Schema.define(version: 20151118192425) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "labors", ["commune_id"], name: "index_labors_on_commune_id", using: :btree
+  add_index "labors", ["owner_id"], name: "index_labors_on_owner_id", using: :btree
+
   create_table "mining_wastes", force: :cascade do |t|
     t.integer  "sernageomin_id",                          null: false
     t.string   "status",                                  null: false
@@ -46,6 +49,8 @@ ActiveRecord::Schema.define(version: 20151118192425) do
     t.datetime "updated_at",                              null: false
   end
 
+  add_index "mining_wastes", ["labor_id"], name: "index_mining_wastes_on_labor_id", using: :btree
+  add_index "mining_wastes", ["region_id"], name: "index_mining_wastes_on_region_id", using: :btree
   add_index "mining_wastes", ["sernageomin_id"], name: "index_mining_wastes_on_sernageomin_id", using: :btree
 
   create_table "owners", force: :cascade do |t|

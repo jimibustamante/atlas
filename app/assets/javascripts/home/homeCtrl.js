@@ -11,7 +11,7 @@ angular.module('atlasApp')
   .controller('HomeCtrl', ['$scope', 'filtersFact', 'uiGmapGoogleMapApi', function ($scope, filtersFact, uiGmapGoogleMapApi) {
 
       $scope.vm = filtersFact
-
+      $scope.mining_wastes = []
       $scope.map = { center: { latitude: -35.6090313, longitude: -68.8358146 }, zoom: 4 };
       uiGmapGoogleMapApi.then(function (maps) {
       })  

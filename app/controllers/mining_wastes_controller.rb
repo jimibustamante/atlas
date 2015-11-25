@@ -6,8 +6,9 @@ class MiningWastesController < ApplicationController
   def index
     @mining_wastes = []
     Rails.logger.debug params.inspect
+
     if params[:owner_id]
-      if params[:owner_id] && params[:labor_id]
+      if (params[:owner_id] && ( !params[:labor_id].nil? || params[:labor_id] != "" ))
         labor = Labor.find params[:labor_id]
         @mining_wastes = labor.mining_wastes
       else
