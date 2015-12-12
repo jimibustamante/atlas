@@ -11,4 +11,8 @@ class MiningWaste < ActiveRecord::Base
   def coords
     return {latitude: self.lat, longitude: self.lon}
   end
+
+  def popup_url
+    return '/templates/popover.html'
+  end
 end

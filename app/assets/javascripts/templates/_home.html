@@ -46,9 +46,30 @@
 </section>
 
 <section class="map-section col-md-12 col-lg-12">
-  <ui-gmap-google-map center='map.center' zoom='map.zoom' options="map.options" class="col-md-9">
-    <ui-gmap-markers models="mining_wastes" coords="'coords'" icon="'icon'">
-        </ui-gmap-markers>
+  <ui-gmap-google-map center='map.center' control="map.mapControl" zoom='map.zoom' options="map.options" class="col-md-9">
+    <ui-gmap-markers models="mining_wastes" coords="'coords'" icon="'icon'" click="updateMarkerInfo">
+      <ui-gmap-windows show="show">
+          <div ng-non-bindable>
+            <div href="#" class="list-group-item" >
+              <h4 class="list-group-item-heading">Relave Seleccionado</h4>
+              <p class="list-group-item-text">Nombre: {{name}} </p>
+              <p class="list-group-item-text">Estado: {{status}} </p>
+              <p class="list-group-item-text">UTM Norte: {{utm_north}} </p>
+              <p class="list-group-item-text">UTM Este: {{utm_east}} </p>
+              <p class="list-group-item-text">Tipo de relave: {{mining_waste_type}} </p>
+              <p class="list-group-item-text">Volumen parcial: {{partial_volume}} </p>
+              <p class="list-group-item-text">Volumen total: {{total_volume}} </p>
+              <p class="list-group-item-text">Tonelaje parcial: {{partial_ton}} </p>
+              <p class="list-group-item-text">Tonelaje total: {{total_ton}} </p>
+              <p class="list-group-item-text">Resolución: {{resolution}} </p>
+              <p class="list-group-item-text">Fecha de resolución: {{resolution_date}} </p>
+              <p class="list-group-item-text">Número de resolución: {{resolution_number}} </p>
+              <p class="list-group-item-text">Fecha de clausura de resolución: {{resolution_closure_date}} </p>
+              <p class="list-group-item-text">Número clausura de resolución: {{resolution_closure_number}} </p>
+            </div>
+          </div>
+      </ui-gmap-windows>
+    </ui-gmap-markers>
   </ui-gmap-google-map>
   <info-box region-id="region_id" commune-id="commune_id" vm="vm" class="info-container col-md-3"></info-box>
   <p class="map-text col-md-9"> Los mapas publicados en este sitio que se refieran o relacionen con los límites y fronteras de Chile, no comprometen
