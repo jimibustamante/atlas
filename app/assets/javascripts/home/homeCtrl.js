@@ -26,7 +26,7 @@ angular.module('atlasApp')
           center: { 
             latitude: -35.6090313, 
             longitude: -68.8358146 
-          }, 
+          },
           zoom: 4,
           options: {
             mapTypeId: $scope.maps.MapTypeId.SATELLITE
@@ -106,7 +106,6 @@ angular.module('atlasApp')
       }      
 
       $scope.updateMarkerInfo = function (marker, event_name, relave) {
-        debugger
       }
   
     }]);

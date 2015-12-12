@@ -15,4 +15,21 @@ class MiningWaste < ActiveRecord::Base
   def popup_url
     return '/templates/popover.html'
   end
+
+  def formated_resolution_date
+    if resolution_date.nil?
+      "S/I"
+    else
+      resolution_date.strftime("%d/%m/%Y")
+    end
+  end
+
+  def formated_resolution_closure_date
+    if resolution_closure_date.nil?
+      "S/I"
+    else
+      resolution_closure_date.strftime("%d/%m/%Y")
+    end
+  end
+
 end
