@@ -92,6 +92,15 @@ namespace :import do
             utm_east: row["UTM_ESTE"],
             height: row["COTA"],
             name: row["NOMBRE_INS"],
+            mining_waste_type: row["TIPO_INSTA"],
+            partial_volume: row["Vol_Parcial_1"],
+            total_volume: row["Vol_Total_1"],
+            partial_ton: row["Ton_Parcial_1"],
+            total_ton: row["Ton_Total_1"],
+            resolution_date: row["FECHA_RE"],
+            resolution_number: row["RES"],
+            resolution_closure_date: row["FECHA_RES_PDC"],
+            resolution_closure_number: row["RES_PDC"],
             region_id: labor.commune.province.region.id
         else
           mining_waste.update_attributes! sernageomin_id: row["OBJECTID"], 
@@ -103,6 +112,15 @@ namespace :import do
             utm_east: row["UTM_ESTE"],
             height: row["COTA"],
             name: row["NOMBRE_INS"],
+            mining_waste_type: row["TIPO_INSTA"],
+            partial_volume: row["Vol_Parcial_1"],
+            total_volume: row["Vol_Total_1"],
+            partial_ton: row["Ton_Parcial_1"],
+            total_ton: row["Ton_Total_1"],
+            resolution_date: row["FECHA_RE"],
+            resolution_number: row["RES"],
+            resolution_closure_date: row["FECHA_RES_PDC"],
+            resolution_closure_number: row["RES_PDC"],
             region_id: labor.commune.province.region.id
         end
       end

@@ -36,7 +36,7 @@ class MiningWastesController < ApplicationController
       end
     end
     respond_to do |format|
-      format.json { render json: @mining_wastes.as_json(methods: [:coords], only: [:id]), status: :ok }
+      format.json { render json: @mining_wastes.as_json(methods: [:coords, :popup_url]), status: :ok }
     end
   end
 

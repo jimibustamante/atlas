@@ -8,19 +8,32 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('HomeCtrl', ['$scope', 'filtersFact', 'uiGmapGoogleMapApi', function ($scope, filtersFact, uiGmapGoogleMapApi) {
+  .controller('HomeCtrl', ['$scope', 'filtersFact', 'uiGmapGoogleMapApi', 'uiGmapIsReady', function ($scope, filtersFact, uiGmapGoogleMapApi, uiGmapIsReady) {
 
       $scope.vm = filtersFact
       $scope.mining_wastes = []
+
+      uiGmapIsReady.promise().then(function (maps_instances) {
+        $scope.map_instance = maps_instances[0].map
+      })
+
+      $scope.$on('mapInitialized', function(event, map) {
+      });
+
       uiGmapGoogleMapApi.then(function (maps) {
         $scope.maps = maps
-        $scope.map = { center: { latitude: -35.6090313, longitude: -68.8358146 }, 
+        $scope.map = { 
+          center: { 
+            latitude: -35.6090313, 
+            longitude: -68.8358146 
+          }, 
           zoom: 4,
           options: {
             mapTypeId: $scope.maps.MapTypeId.SATELLITE
           } 
         };
       })  
+
 
       filtersFact.regions().then(function successCallback(response) {
         $scope.regions =  response.data
@@ -62,6 +75,7 @@ angular.module('atlasApp')
       $scope.getMiningWastes = function () {
         filtersFact.miningWastes($scope.region_id, $scope.commune_id).then(function successCallback(response){
           $scope.mining_wastes = response.data
+          $scope.mapFitBounds()
         }, function errorCallback (response) {
           console.log("error")
           $scope.mining_wastes = []
@@ -72,18 +86,27 @@ angular.module('atlasApp')
         filtersFact.getOwnerMiningWastes($scope.owner.id, $scope.labor_id).then(function successCallback(response){
           console.log("getMiningWastesByOwner")
           $scope.mining_wastes = response.data
+          $scope.mapFitBounds()
         }, function errorCallback (response) {
           console.log("error")
           $scope.mining_wastes = []
         });
       }
 
-      $scope.mapFitBounds = function (argument) {
-        var bounds = new $scope.maps.LatLngBounds();
-        for (var i in markers) // your marker list here
-            bounds.extend(markers[i].position) // your marker position, must be a LatLng instance
-  
-        map.fitBounds(bounds);
+      $scope.mapFitBounds = function () {
+        setTimeout(function() {
+          if ($scope.mining_wastes.length > 0 ) {
+            var bounds = new $scope.maps.LatLngBounds();
+            _.each($scope.mining_wastes, function (mw) {
+              bounds.extend(new $scope.maps.LatLng(mw.coords.latitude, mw.coords.longitude))
+            })
+            $scope.map_instance.fitBounds(bounds)
+          }
+        }, 100);
       }      
+
+      $scope.updateMarkerInfo = function (marker, event_name, relave) {
+        debugger
+      }
   
     }]);

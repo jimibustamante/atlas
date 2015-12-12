@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151125161937) do
+ActiveRecord::Schema.define(version: 20151212031159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,18 +35,28 @@ ActiveRecord::Schema.define(version: 20151125161937) do
   add_index "labors", ["owner_id"], name: "index_labors_on_owner_id", using: :btree
 
   create_table "mining_wastes", force: :cascade do |t|
-    t.integer  "sernageomin_id",                          null: false
-    t.string   "status",                                  null: false
+    t.integer  "sernageomin_id",                                     null: false
+    t.string   "status",                                             null: false
     t.string   "name"
-    t.decimal  "height",         precision: 10, scale: 6
-    t.decimal  "utm_north",      precision: 10, scale: 6
-    t.decimal  "utm_east",       precision: 10, scale: 6
-    t.decimal  "lon",            precision: 10, scale: 6
-    t.decimal  "lat",            precision: 10, scale: 6
-    t.integer  "labor_id",                                null: false
-    t.integer  "region_id",                               null: false
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.decimal  "height",                    precision: 10, scale: 6
+    t.decimal  "utm_north",                 precision: 10, scale: 6
+    t.decimal  "utm_east",                  precision: 10, scale: 6
+    t.decimal  "lon",                       precision: 10, scale: 6
+    t.decimal  "lat",                       precision: 10, scale: 6
+    t.integer  "labor_id",                                           null: false
+    t.integer  "region_id",                                          null: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
+    t.string   "mining_waste_type"
+    t.string   "partial_volume"
+    t.string   "total_volume"
+    t.string   "partial_ton"
+    t.string   "total_ton"
+    t.string   "resolution"
+    t.date     "resolution_date"
+    t.string   "resolution_number"
+    t.date     "resolution_closure_date"
+    t.string   "resolution_closure_number"
   end
 
   add_index "mining_wastes", ["labor_id"], name: "index_mining_wastes_on_labor_id", using: :btree
