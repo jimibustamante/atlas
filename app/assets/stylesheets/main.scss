@@ -1,16 +1,13 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
-}
-
 body {
   padding: 0; 
   color: #1066b0;
   background-color: #F5F5F5;
+
+  .popup, .intro {
+    color: slategray;
+  }
 }
 
 header {

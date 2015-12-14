@@ -1,4 +1,7 @@
 <section class="filters col-md-12 col-lg-12">
+  <p class="intro lead">
+    Ultiliza los filtros de búsqueda que se presentan debajo para poder encontrar y obtener información de los depósitos de relaves existentes en nuestro país. 
+  </p>
   <form class="col-md-6 col-lg-6">
     <div class="form-group">
       <label for="inputRegion">Región</label>
@@ -50,7 +53,7 @@
   <ui-gmap-google-map center='map.center' control="map.mapControl" zoom='map.zoom' options="map.options" class="col-md-9">
     <ui-gmap-markers models="mining_wastes" coords="'coords'" options="map.markerOptions" click="updateMarkerInfo">
       <ui-gmap-windows show="show" cleanchunk="false">
-          <div ng-non-bindable>
+          <div ng-non-bindable class="popup">
             <div href="#" class="list-group-item" >
               <h4 class="list-group-item-heading">Relave Seleccionado</h4>
               <p class="list-group-item-text">Nombre: {{name}} </p>
