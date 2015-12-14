@@ -21,12 +21,12 @@ module Atlas
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
+    # config.active_record.raise_in_transactional_callbacks = true
+    #config.serve_static_files = true
+    #config.less.paths << Rails.root.join('app', 'assets', 'bower_components')
+    #config.assets.paths << Rails.root.join('app', 'assets', 'bower_components')
+    #config.assets.initialize_on_precompile = true
+    #config.assets.precompile = ['*.js', '*.js.erb', '*.css', '*.css.erb', '*.eot', '*.svg', '*.ttf', '*.woff', '*.woff2']
 
-    config.angular_templates.module_name    = 'templates'
-    config.angular_templates.ignore_prefix  = %w(templates/)
-    config.angular_templates.inside_paths   = [Rails.root.join('app', 'assets', 'javascripts')]
-    #config.angular_templates.markups        = %w(erb str haml slim md)
-    config.angular_templates.htmlcompressor = false
   end
 end
