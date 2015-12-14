@@ -12,6 +12,7 @@ angular.module('atlasApp')
 
       $scope.vm = filtersFact
       $scope.mining_wastes = []
+      $scope.alerts = []
 
       uiGmapIsReady.promise().then(function (maps_instances) {
         $scope.map_instance = maps_instances[0].map
@@ -75,7 +76,14 @@ angular.module('atlasApp')
       $scope.getMiningWastes = function () {
         filtersFact.miningWastes($scope.region_id, $scope.commune_id).then(function successCallback(response){
           $scope.mining_wastes = response.data
-          $scope.mapFitBounds()
+          if ($scope.mining_wastes.length > 0) {
+            $scope.mapFitBounds()
+          } else {
+            var center = new $scope.maps.LatLng(-35.6090313, -68.8358146)
+            $scope.map_instance.setCenter(center)
+            $scope.map_instance.setZoom(4)
+            $scope.showErrorAlert()
+          }
         }, function errorCallback (response) {
           console.log("error")
           $scope.mining_wastes = []
@@ -104,6 +112,16 @@ angular.module('atlasApp')
           }
         }, 100);
       }      
+
+      $scope.showErrorAlert = function () {
+        if ($scope.alerts.length === 0) {
+          $scope.alerts.push({msg: 'No existen resultados para esta búsqueda.', type: 'danger'})
+        }
+      }
+
+      $scope.closeAlert = function () {
+        $scope.alerts = []
+      }
 
       $scope.updateMarkerInfo = function (marker, event_name, relave) {
       }
