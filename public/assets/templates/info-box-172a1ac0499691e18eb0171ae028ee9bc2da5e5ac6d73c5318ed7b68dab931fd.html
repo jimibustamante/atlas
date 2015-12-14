@@ -1,0 +1,35 @@
+<div class="list-group col-md-12 col-lg-12">
+  <a href="#" class="list-group-item">
+    <h4 class="list-group-item-heading">Nacional</h4>
+    <p class="list-group-item-text">Cantidad de Depósitos de Relaves: {{national_stats.mining_wastes_count}} </p>
+    <p class="list-group-item-text">Activos: {{national_stats.active_mining_wastes}} </p>
+    <p class="list-group-item-text">No activos: {{national_stats.inactive_mining_wastes}} </p>
+    <p class="list-group-item-text">Abandonados: {{national_stats.abandoned_mining_wastes}} </p>
+    <p class="list-group-item-text">Sin Información: {{national_stats.no_info}} </p>
+  </a>
+  <a href="#" class="list-group-item" ng-hide="!vm.regional_stats">
+    <h4 class="list-group-item-heading">Regional</h4>
+    <p class="list-group-item-text">Region: {{vm.regional_stats.name}} </p>
+    <p class="list-group-item-text">Cantidad de Depósitos de Relaves: {{vm.regional_stats.mining_wastes_count}} </p>
+    <p class="list-group-item-text">Activos: {{vm.regional_stats.active_mining_wastes}} </p>
+    <p class="list-group-item-text">No activos: {{vm.regional_stats.inactive_mining_wastes}} </p>
+    <p class="list-group-item-text">Abandonados: {{vm.regional_stats.abandoned_mining_wastes}} </p>
+    <p class="list-group-item-text">Sin Información: {{vm.regional_stats.no_info}} </p>
+  </a>
+  <a href="#" class="list-group-item" ng-hide="!vm.commune_stats">
+    <h4 class="list-group-item-heading">Comunal</h4>
+    <p class="list-group-item-text">Comuna: {{vm.commune_stats.name}} </p>
+    <p class="list-group-item-text">Cantidad de Depósitos de Relaves: {{vm.commune_stats.mining_wastes_count}} </p>
+    <p class="list-group-item-text">Activos: {{vm.commune_stats.active_mining_wastes}} </p>
+    <p class="list-group-item-text">No activos: {{vm.commune_stats.inactive_mining_wastes}} </p>
+    <p class="list-group-item-text">Abandonados: {{vm.commune_stats.abandoned_mining_wastes}} </p>
+    <p class="list-group-item-text">Sin Información: {{vm.commune_stats.no_info}} </p>
+  </a>
+  <a href="#" class="list-group-item" >
+    <h4 class="list-group-item-heading">Relave Seleccionado</h4>
+    <p class="list-group-item-text">Nombre:  </p>
+    <p class="list-group-item-text">Estado:  </p>
+    <p class="list-group-item-text">UTM Norte:  </p>
+    <p class="list-group-item-text">UTM Sur:  </p>
+  </a>
+</div>

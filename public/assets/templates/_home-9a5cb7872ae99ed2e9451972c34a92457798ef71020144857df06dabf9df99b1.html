@@ -1,0 +1,53 @@
+<section class="filters col-md-12 col-lg-12">
+  <form class="col-md-6 col-lg-6">
+    <div class="form-group">
+      <label for="inputRegion">Región</label>
+      <select ng-model="region_id" ng-change="getCommunes()" class="form-control" id="inputRegion" >
+        <option value="">Seleccione Región</option>
+        <option ng-repeat="r in regions" value="{{r.id}}">{{r.region_number}} - {{r.name}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="inputComuna">Comuna</label>
+      <select ng-model="commune_id" class="form-control" class="form-control" id="inputComuna">
+        <option value="">Seleccione Comuna</option>
+        <option ng-repeat="c in communes" value="{{c.id}}">{{c.name}}</option>
+      </select>
+    </div>
+    <button ng-click="getMiningWastes()" type="submit" class="btn btn-default" ng-disabled="!commune_id && !region_id">Filtrar</button>
+  </form>
+
+<form class="col-md-6 col-lg-6">
+  <div class="form-group">
+    <label for="inputOwner" class="control-label">Dueño/Empresa</label>
+    <div class="form-group">
+      <input type="text" class="form-control" typeahead-on-select="getLabors()" ng-model="owner" placeholder="Escriba un nombre..." typeahead="owner as owner.name for owner in getOwnersTypeahead($viewValue)">
+
+      <i ng-show="loadingOwners" class="glyphicon glyphicon-refresh"></i>
+      <div ng-show="noResults">
+        <i class="glyphicon glyphicon-remove"></i> No Results Found
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputComuna">Faena</label>
+      <select ng-model="labor_id" class="form-control" class="form-control" id="inputComuna">
+        <option value="">Seleccione Faena</option>
+        <option ng-repeat="l in labors" value="{{l.id}}">{{l.name}}</option>
+      </select>
+    </div>    
+  </div>
+
+  <div class="form-group">
+    <div>
+      <button type="submit" ng-click="getMiningWastesByOwner()" class="btn btn-default" ng-disabled="!owner.id && !labor_id">Filtrar por Dueño</button>
+    </div>
+  </div>
+</form>
+</section>
+
+<section class="map-section col-md-12 col-lg-12">
+  <ui-gmap-google-map center='map.center' zoom='map.zoom' class="col-md-8">
+    <ui-gmap-marker data-ng-repeat="mw in mining_wastes" idKey="mw.id" coords='mw.coords'> </ui-gmap-marker>
+  </ui-gmap-google-map>
+  <info-box region-id="region_id" commune-id="commune_id" class="info-container col-md-4"></info-box>
+</section>
