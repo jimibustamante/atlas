@@ -36,7 +36,7 @@ class MiningWastesController < ApplicationController
       end
     end
     respond_to do |format|
-      format.json { render json: @mining_wastes.as_json(methods: [:coords, :formated_resolution, :formated_resolution_date, :formated_resolution_closure_date, :formated_resolution_closure_number]), status: :ok }
+      format.json { render json: @mining_wastes.as_json(methods: [:coords, :formated_resolution, :formated_resolution_date, :formated_resolution_closure_date, :formated_resolution_closure_number, :labor_name, :owner_name, :formated_utm_north, :formated_utm_east, :formated_partial_ton, :formated_total_ton, :formated_total_volume, :formated_partial_volume, :commune_id]), status: :ok }
     end
   end
 

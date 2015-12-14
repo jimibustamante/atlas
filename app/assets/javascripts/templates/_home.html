@@ -51,20 +51,21 @@
 <section class="map-section col-md-12 col-lg-12">
   <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()" dismiss-on-timeout="5000">{{alert.msg}}</uib-alert>
   <ui-gmap-google-map center='map.center' control="map.mapControl" zoom='map.zoom' options="map.options" class="col-md-9">
-    <ui-gmap-markers models="mining_wastes" coords="'coords'" options="map.markerOptions" click="updateMarkerInfo">
+    <ui-gmap-markers models="mining_wastes" coords="'coords'" options="map.markerOptions" click="updateStatsInfo">
       <ui-gmap-windows show="show" cleanchunk="false">
           <div ng-non-bindable class="popup">
             <div href="#" class="list-group-item" >
-              <h4 class="list-group-item-heading">Relave Seleccionado</h4>
-              <p class="list-group-item-text">Nombre: {{name}} </p>
+              <h4 class="list-group-item-heading">{{name}}</h4>
+              <p class="list-group-item-text">Dueño: {{owner_name}} </p>
+              <p class="list-group-item-text">Faena: {{labor_name}} </p>
               <p class="list-group-item-text">Estado: {{status}} </p>
-              <p class="list-group-item-text">UTM Norte: {{utm_north}} </p>
-              <p class="list-group-item-text">UTM Este: {{utm_east}} </p>
+              <p class="list-group-item-text">UTM Norte: {{formated_utm_north}} </p>
+              <p class="list-group-item-text">UTM Este: {{formated_utm_east}} </p>
               <p class="list-group-item-text">Tipo de relave: {{mining_waste_type}} </p>
-              <p class="list-group-item-text">Volumen parcial: {{partial_volume}} </p>
-              <p class="list-group-item-text">Volumen total: {{total_volume}} </p>
-              <p class="list-group-item-text">Tonelaje parcial: {{partial_ton}} </p>
-              <p class="list-group-item-text">Tonelaje total: {{total_ton}} </p>
+              <p class="list-group-item-text">Volumen parcial: {{formated_partial_volume}} m&#179</p>
+              <p class="list-group-item-text">Volumen total: {{formated_total_volume}} m&#179</p>
+              <p class="list-group-item-text">Tonelaje parcial: {{formated_partial_ton}} ton</p>
+              <p class="list-group-item-text">Tonelaje total: {{formated_total_ton}} ton</p>
               <p class="list-group-item-text">Resolución: {{formated_resolution}} </p>
               <p class="list-group-item-text">Fecha de resolución: {{formated_resolution_date}} </p>
               <p class="list-group-item-text">Número de resolución: {{resolution_number}} </p>

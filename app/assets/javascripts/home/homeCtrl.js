@@ -126,7 +126,9 @@ angular.module('atlasApp')
         $scope.alerts = []
       }
 
-      $scope.updateMarkerInfo = function (marker, event_name, relave) {
+      $scope.updateStatsInfo = function (marker, event_name, relave) {
+        $scope.vm.communeStats(relave.commune_id)
+        $scope.vm.regionStats(relave.region_id)
       }
   
     }]);
