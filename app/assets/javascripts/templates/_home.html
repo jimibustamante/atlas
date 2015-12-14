@@ -1,4 +1,7 @@
 <section class="filters col-md-12 col-lg-12">
+  <p class="intro lead">
+    Ultiliza los filtros de búsqueda que se presentan debajo para poder encontrar y obtener información de los depósitos de relaves existentes en nuestro país. 
+  </p>
   <form class="col-md-6 col-lg-6">
     <div class="form-group">
       <label for="inputRegion">Región</label>
@@ -46,10 +49,11 @@
 </section>
 
 <section class="map-section col-md-12 col-lg-12">
+  <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()" dismiss-on-timeout="5000">{{alert.msg}}</uib-alert>
   <ui-gmap-google-map center='map.center' control="map.mapControl" zoom='map.zoom' options="map.options" class="col-md-9">
-    <ui-gmap-markers models="mining_wastes" coords="'coords'" icon="'icon'" click="updateMarkerInfo">
-      <ui-gmap-windows show="show">
-          <div ng-non-bindable>
+    <ui-gmap-markers models="mining_wastes" coords="'coords'" options="map.markerOptions" click="updateMarkerInfo">
+      <ui-gmap-windows show="show" cleanchunk="false">
+          <div ng-non-bindable class="popup">
             <div href="#" class="list-group-item" >
               <h4 class="list-group-item-heading">Relave Seleccionado</h4>
               <p class="list-group-item-text">Nombre: {{name}} </p>
@@ -62,9 +66,9 @@
               <p class="list-group-item-text">Tonelaje parcial: {{partial_ton}} </p>
               <p class="list-group-item-text">Tonelaje total: {{total_ton}} </p>
               <p class="list-group-item-text">Resolución: {{resolution}} </p>
-              <p class="list-group-item-text">Fecha de resolución: {{resolution_date}} </p>
+              <p class="list-group-item-text">Fecha de resolución: {{formated_resolution_date}} </p>
               <p class="list-group-item-text">Número de resolución: {{resolution_number}} </p>
-              <p class="list-group-item-text">Fecha de clausura de resolución: {{resolution_closure_date}} </p>
+              <p class="list-group-item-text">Fecha de clausura de resolución: {{formated_resolution_closure_date}} </p>
               <p class="list-group-item-text">Número clausura de resolución: {{resolution_closure_number}} </p>
             </div>
           </div>
