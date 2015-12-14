@@ -23,6 +23,7 @@ development:
 
 production:
   adapter: postgresql
+  host: localhost
   encoding: UTF-8
   pool: 5
   timeout: 5000
