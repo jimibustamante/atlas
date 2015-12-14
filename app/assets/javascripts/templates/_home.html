@@ -48,7 +48,7 @@
 <section class="map-section col-md-12 col-lg-12">
   <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()" dismiss-on-timeout="5000">{{alert.msg}}</uib-alert>
   <ui-gmap-google-map center='map.center' control="map.mapControl" zoom='map.zoom' options="map.options" class="col-md-9">
-    <ui-gmap-markers models="mining_wastes" coords="'coords'" icon="'icon'" click="updateMarkerInfo">
+    <ui-gmap-markers models="mining_wastes" coords="'coords'" options="map.markerOptions" click="updateMarkerInfo">
       <ui-gmap-windows show="show" cleanchunk="false">
           <div ng-non-bindable>
             <div href="#" class="list-group-item" >

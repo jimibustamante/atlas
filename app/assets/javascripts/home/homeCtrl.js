@@ -31,7 +31,10 @@ angular.module('atlasApp')
           zoom: 4,
           options: {
             mapTypeId: $scope.maps.MapTypeId.SATELLITE
-          } 
+          },
+          markerOptions: {
+            animation: $scope.maps.Animation.DROP
+          }
         };
       })  
 
