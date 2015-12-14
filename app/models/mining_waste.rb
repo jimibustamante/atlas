@@ -12,15 +12,27 @@ class MiningWaste < ActiveRecord::Base
     return {latitude: self.lat, longitude: self.lon}
   end
 
-  def popup_url
-    return '/templates/popover.html'
-  end
-
   def formated_resolution_date
     if resolution_date.nil?
       "S/I"
     else
       resolution_date.strftime("%d/%m/%Y")
+    end
+  end
+
+  def formated_resolution
+    if resolution.nil?
+      "S/I"
+    else
+      resolution
+    end
+  end
+
+  def formated_resolution_closure_number
+    if resolution_closure_number.nil?
+      "S/I"
+    else
+      resolution_closure_number
     end
   end
 
