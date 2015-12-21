@@ -6,28 +6,20 @@
 #   gem 'sqlite3'
 #
 
-development:
-  adapter: postgresql
-  encoding: UTF-8
-  pool: 5
-  timeout: 5000  
+development: 
+  adapter: mysql2
+  encoding: utf8
   database: atlas_development
-  username: atlas
+  username: root
   password: winn1379
-  host: localhost 
-
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
-#test:
-#  database: db/test.sqlite3
+  host: 127.0.0.1
+  port: 3306
 
 production:
-  adapter: postgresql
-  host: localhost
-  encoding: UTF-8
-  pool: 5
-  timeout: 5000
-  database: atlas_production
-  username: atlas
-  password: winn1379
+  adapter: mysql2
+  encoding: utf8
+  database: production_database_name
+  username: production_user
+  password: production_user_password
+  host: 127.0.0.1
+  port: 3306
