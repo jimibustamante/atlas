@@ -77,6 +77,18 @@ $ RAILS_ENV=production rake db:seed
 $ RAILS_ENV=production rake import:all
 ```
 
+Los siguiente es instalar lo necesario para obtener las librerias utiliadas en el front. Para ello se utliza Bower:
+```sh
+# Primero instalamos NodeJS y NPM
+$ sudo yum install nodejs npm
+# Ahora vamos por Bower
+$ npm install -g bower
+```
+Ya que tenemos Bower en nuestro sistema podremos instalar las dependencias del Front-end. Estas se encuentran listadas 'bower.json'. Para esto:
+```sh
+$ bower install
+```
+
 Para compilar los assets que utilizara la web app, desde la carpeta root del proyecto corremos los siguiente:
 ```sh
 $ RAILS_ENV=production rake assets:precompile
