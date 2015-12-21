@@ -10,8 +10,8 @@ development:
   adapter: mysql2
   encoding: utf8
   database: atlas_development
-  username: root
-  password: winn1379
+  username: atlas
+  password: atlas_password
   host: 127.0.0.1
   port: 3306
 

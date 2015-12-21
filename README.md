@@ -4,6 +4,7 @@ Este repositorio contiene el proyecto web 'Atlas de Depósitos Relaves'. Mediant
 
 El proyecto está escrito en Ruby y Javascript. El servidor Ruby on Rails, se encarga de servir los assets necesarios para el cliente y funciona como API. Por el lado del cliente, la app web está construida en AngulajJS.  
 
+Esta documentación asume que se instalará la aplicación en una máquina CentOS.
 
 ## Prerquisitos
   
